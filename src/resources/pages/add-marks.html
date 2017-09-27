@@ -1,0 +1,44 @@
+<template>
+  <!-- Add Marks -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <md-card md-title="Add Class Test Marks">
+          <form submit.delegate="upload()">
+            <div class="row">
+              <div class="col s12">
+                <div class="input-field">
+                  <select autofocus md-select value.bind="ctNo">
+                      <option value="" disabled selected>Select Class Test</option>
+                      <option value="1">Class Test 1</option>
+                      <option value="2">Class Test 2</option>
+                    </select>
+                </div>
+              </div>
+              <div class="col s12 m6">
+                <md-input md-type="number" md-label="Passing Marks" md-value.bind="passingMarks"></md-input>
+              </div>
+              <div class="col s12 m6">
+                <md-input md-type="number" md-label="Total Marks" md-value.bind="totalMarks"></md-input>
+              </div>
+              <div class="file-field input-field col s12">
+                <div md-button md-waves class="primary">
+                  <span>File<i class="material-icons right">file_upload</i></span>
+                  <input type="file" accept=".csv,.xls,.xlsx,.ods" files.bind="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+                <p><a href="#">Download the template</a></p>
+              </div>
+            </div>
+            <div class="right-align">
+              <button md-button md-waves type="submit">Upload<i class="material-icons right">send</i></button>
+            </div>
+          </form>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</template>

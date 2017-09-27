@@ -1,0 +1,16 @@
+{
+  "short_name": "DIEMS App",
+  "name": "DIEMS App",
+  "background_color": "#fafafa",
+  "theme_color": "#311b92",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "assets/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/?launcher=true"
+}

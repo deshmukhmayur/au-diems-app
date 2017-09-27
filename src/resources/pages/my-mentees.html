@@ -1,0 +1,28 @@
+<template>
+  <require from="../components/results-table"></require>
+
+  <div class="container">
+    <div class="row">
+      <div class="col s12">
+        <h5>Total Mentees: <span class="grey-text text-darken-2">${mentees.length}</span></h5>
+      </div>
+    </div>
+    <div class="row">
+      <ul md-collapsible="accordion: true; popout: true;">
+        <li repeat.for="mentee of mentees">
+          <div class="collapsible-header" click.trigger="isVisible = !isVisible">
+            <div class="col s12">
+              <code class="col s3 m2 right-align grey-text text-darken-2">${mentee.roll_no}</code>
+              <span class="col s7">${mentee.name}</span>
+              <i class="material-icons secondary-content grey-text text-darken-2 hide-on-small-only">keyboard_arrow_down</i>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <results-table visible.bind="isVisible" studid.bind="mentee.id" below-avg-subjects.bind="mentee.below_avg_subjects">
+            </results-table>              
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,71 @@
+<template bindable="router">
+  <require from="./dashboard.css"></require>
+
+  <header>
+    <md-progress id="main-progress" if.bind="mainRouter.isNavigating"></md-progress>
+    <md-navbar>
+      <ul class="hide-on-large-only" if.bind="!router.currentInstruction.config.settings.isChild">
+        <li md-waves>
+          <a md-sidenav-collapse="ref.bind: sideNav">
+            <i class="large material-icons">menu</i>
+          </a>
+        </li>
+      </ul>
+      <ul if.bind="router.currentInstruction.config.settings.isChild">
+        <li md-waves>
+          <a href="#" click.delegate="router.navigateBack()">
+            <i class="large material-icons">arrow_back</i>
+          </a>
+        </li>
+      </ul>
+      <a href="#${router.baseUrl}" class="brand-logo truncate"><span>${router.currentInstruction.config.title}</span></a>
+      <!-- <ul class="hide-on-med-and-down right">
+        <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active':''}"><a href.bind="row.href">${row.title}</a></li>
+      </ul> -->
+    </md-navbar>
+  </header>
+
+  <aside>
+    <md-sidenav view-model.ref="sideNav" md-fixed="true" md-close-on-click="true" md-edge="left">
+      <div class="user-view">
+        <div class="background">
+          <img src="assets/user_profile_background.png" style="width: 100%;">
+        </div>
+        <!-- <a href="#!user"><img class="circle" src="http://via.placeholder.com/150x140"></a> -->
+        <i class="material-icons circle medium z-depth-1 center grey lighten-3 grey-text text-darken-3">person</i>
+        <span class="white-text name email">${username}<a href="#" md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;" class="right white-text material-icons">arrow_drop_down</a></span>
+        <ul id="dropdown1">
+          <li><a click.trigger="showToast($event)">Profile</a></li>
+          <li class="divider"></li>
+          <li><a click.delegate="signOut()">Sign Out</a></li>
+        </ul>
+      </div>
+      <ul>
+        <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active':''}"><a href.bind="row.href"><i class="material-icons">${row.settings.icon}</i>${row.title}</a></li>
+      </ul>
+      <ul class="float-bottom">
+        <li>
+          <div class="divider"></div>
+        </li>
+        <li md-waves><a href="#"><i class="material-icons">settings</i>Settings</a></li>
+        <li md-waves><a href="#"><i class="material-icons">feedback</i>Feedback</a></li>
+      </ul>
+    </md-sidenav>
+  </aside>
+
+  <main class="page-host">
+    <router-view></router-view>
+  </main>
+
+  <div class="fixed-action-btn" id="fab" if.bind="router.currentInstruction.config.settings.fab">
+    <a md-button="floating: true; large: true;" md-tooltip="position: left; text: Add;" md-waves="color: light; circle: true;">
+      <i class="large material-icons">add</i>
+    </a>
+    <ul>
+      <li><a md-button="floating: true;" md-tooltip="position: left; text: Search;" md-waves="color: light; circle: true;"
+          class="blue modal-trigger"><i class="material-icons">search</i></a></li>
+      <li><a route-href="route: add-marks" md-button="floating: true;" md-tooltip="position: left; text: Class Test Marks;" md-waves="color: light; circle: true;"
+          class="red"><i class="material-icons">insert_chart</i></a></li>
+    </ul>
+  </div>
+</template>

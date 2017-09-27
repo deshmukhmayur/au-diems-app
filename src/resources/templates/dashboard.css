@@ -1,0 +1,34 @@
+header, main, footer {
+    padding-left: 300px;
+}
+.nav-wrapper> .brand-logo {
+    margin-left: 24px;
+}
+
+md-progress#main-progress {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+md-progress#main-progress > .progress {
+    margin: 0;
+}
+
+#fab > a > .material-icons {
+    transition: .2s ease-out;
+}
+#fab:hover > a > .material-icons {
+    transform: rotateZ(45deg);
+}
+
+@media only screen and (max-width : 992px) {
+    header, main, footer {
+        padding-left: 0;
+    }
+    .nav-wrapper {
+        padding-left: initial;
+    }
+    .nav-wrapper> .brand-logo {
+        margin-left: 0;
+    }
+}

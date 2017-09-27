@@ -1,0 +1,59 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m3">
+        <md-collection>
+          <md-collection-header>
+            <h5 class="center-align">Subjects</h5>
+          </md-collection-header>
+          <md-collection-item repeat.for="subject of subjects" class="accent-text ${subject.id == selectedSubId ? 'active':''}" click.trigger="selectSub(subject.id)">
+            ${subject.name}
+          </md-collection-item>
+        </md-collection>
+      </div>
+      <div class="col s12 m9">
+        <md-card if.bind="selectedSubId == -1">
+          <div>
+            Please select a subject from the left sidebar.
+          </div>
+        </md-card>
+        <h5 class="center-align">${subjects[selectedSubId-1].name}</h5>
+        <ul md-collapsible="accordion: false; popout: true;" if.bind="selectedSubId !== -1">
+          <li repeat.for="student of students">
+            <div class="collapsible-header">
+              <div class="col s12">
+                <code class="col s3 m2 right-align grey-text text-darken-2">${student.roll_no}</code>
+                <span class="col s7">${student.name}</span>
+                <i class="material-icons secondary-content grey-text text-darken-2 hide-on-small-only">keyboard_arrow_down</i>
+              </div>
+            </div>
+            <div class="collapsible-body">
+              <div class="row">
+                <div class="col s6">
+                  <b>Class:</b> ${student.class} ${student.branch} ${student.division}
+                </div>
+                <div class="col s6">
+                  <b>Class Test Average:</b> ${student.ct_avg}
+                </div>
+              </div>
+              <table class="highlight centered">
+                <thead>
+                  <tr>
+                    <th>Class Test</th>
+                    <th>Marks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr repeat.for="m of student.marks">
+                    <td>Class Test ${m.ct_no}</td>
+                    <td>${m.obt_marks} <small>/ ${m.total_marks}</small></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

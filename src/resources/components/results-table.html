@@ -1,0 +1,27 @@
+<template>
+
+  <md-progress if.bind="isLoading" md-type="circular" class="center-align col s12"></md-progress>
+  <div if.bind="marks.length">
+    <table class="highlight responsive-table">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Class Test 1</th>
+          <th>Class Test 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr repeat.for="m of marks">
+          <td>${m.subject_name}</td>
+          <td>${m.class_test[0].obt_marks}</td>
+          <td>${m.class_test[1].obt_marks}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h6 class="right-align">Subjects below Average: <span class="grey-text text-darken-2">${belowAvgSubjects}</span></h5>
+  </div>
+
+  <div if.bind="!marks.length" class="center">
+    <h6>Class Test Results for this student are not available at the moment.</h6>
+  </div>
+</template>

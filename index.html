@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <base href="/">
+    <link rel="manifest" href="/manifest.json">
+    <meta charset="utf-8">
+    <title>DIEMS App</title>
+    <!--The FontAwesome version is locked at 4.6.3 in the package.json file to keep this from breaking.-->
+    <!-- <link rel="stylesheet" href="jspm_packages/npm/font-awesome@4.6.3/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="styles/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">    
+  </head>
+
+  <body aurelia-app="main" class="grey lighten-5">
+    <div class="splash">
+      <div class="message">DIEMS App</div>
+
+      <div class="preloader-wrapper big active">
+        <div class="spinner-layer spinner-blue">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-red">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-yellow">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+
+        <div class="spinner-layer spinner-green">
+          <div class="circle-clipper left">
+            <div class="circle"></div>
+          </div>
+          <div class="gap-patch">
+            <div class="circle"></div>
+          </div>
+          <div class="circle-clipper right">
+            <div class="circle"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div>Loading...</div>
+    </div>
+
+
+    <!-- The bluebird version is locked at 3.4.1 in the package.json file to keep this from breaking -->
+    <!-- We include bluebird to bypass Edge's very slow Native Promise implementation. The Edge team -->
+    <!-- has fixed the issues with their implementation with these fixes being distributed with the  -->
+    <!-- Windows 10 Anniversary Update on 2 August 2016. Once that update has pushed out, you may    -->
+    <!-- consider removing bluebird from your project and simply using native promises if you do     -->
+    <!-- not need to support Internet Explorer.                                                      -->
+    <script src="jspm_packages/system.js"></script>
+    <script src="config.js"></script>
+    <!-- <script src="jspm_packages/npm/bluebird@3.4.1/js/browser/bluebird.min.js"></script> -->
+    <script>
+      System.import('aurelia-bootstrapper');
+    </script>
+  </body>
+</html>

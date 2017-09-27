@@ -1,0 +1,80 @@
+<template>
+  <!-- <h3>Home</h3> -->
+
+  <style>
+    .flex-col {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+    }
+  </style>
+
+  <div class="container flex-col">
+    <div class="row">
+      <div class="col s12">
+        <a route-href="route: add-marks" md-button md-waves class="right"><i class="left material-icons">add</i>Add Marks</a>
+      </div>
+    </div>
+    <div class="row" if.bind="!staff" style="flex: 1;">
+      <div class="col s12 center-align">
+        Problem loading your data.
+      </div>
+    </div>
+    <div class="row" if.bind="staff">
+      <div class="col s12 m6" if.bind="staff.my_class">
+        <md-card md-title="My Class" md-action="true">
+          <div class="row">
+            <div class="col s6">
+              <b>Branch:</b> ${staff.my_class.class} ${staff.my_class.branch} ${staff.my_class.division}
+            </div>
+            <div class="col s6">
+              <b>Total Students:</b> ${staff.my_class.total_students}
+            </div>
+          </div>
+          <div slot="action">
+            <a route-href="route: class" class="pink-text">More</a>
+          </div>
+        </md-card>
+      </div>
+      <div class="col s12 m6" if.bind="staff.my_mentees">
+        <md-card md-title="My Mentees" md-action="true">
+          <div class="row">
+            <div class="col s6">
+              <b>Batch:</b> ${staff.my_mentees.batch} (${staff.my_mentees.class} ${staff.my_mentees.branch} ${staff.my_mentees.division})
+            </div>
+            <div class="col s6">
+              <b>Total Students:</b> ${staff.my_mentees.total_students}
+            </div>
+          </div>
+          <div slot="action">
+            <a route-href="route: mentees" class="pink-text">More</a>
+          </div>
+        </md-card>
+      </div>
+      <div class="col s12 m6" if.bind="staff.my_subjects">
+        <md-card md-title="My Subjects" md-action="true">
+          <table class="highlight centered responsive-table">
+            <thead>
+              <tr>
+                <th>Subject</th>
+                <th>Below Avg (CT 1)</th>
+                <th>Below Avg (CT 2)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr repeat.for="subject of staff.my_subjects">
+                <td>${subject.subject_name}</td>
+                <td>${subject.below_avg_test_1}</td>
+                <td>${subject.below_avg_test_2}</td>
+              </tr>
+            </tbody>
+          </table>
+          <div slot="action">
+            <a route-href="route: subjects" class="pink-text">More</a>
+          </div>
+        </md-card>
+      </div>
+    </div>
+  </div>
+
+</template>
