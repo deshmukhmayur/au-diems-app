@@ -7,8 +7,8 @@ import { ValidationController, ValidationRules } from 'aurelia-validation';
 import { MaterializeFormValidationRenderer } from 'aurelia-materialize-bridge';
 import { MdToastService } from 'aurelia-materialize-bridge/toast/toastService';
 
-import { App } from './app';
-import { User } from './resources/models/user';
+import { App } from '../../app';
+import { User } from '../../resources/models/user';
 
 @inject(Router, HttpClient, NewInstance.of(ValidationController), MdToastService)
 export class Login {
@@ -65,16 +65,17 @@ export class Login {
           })
         }).then(res => res.json())
           .then(data => {
-            // console.log(data);
+            console.log(data);
             if (data.status >= 200 && data.status < 300) {
               App.user = new User(
                 data.username,
                 data.access_token,
                 this.userType
               );
+              console.log(App.user);
               localStorage.setItem('user', JSON.stringify(App.user));
               this.toast.show('Login Successfull', 3000, 'green');
-              this.router.navigateToRoute('home');
+              this.router.navigateToRoute(App.user.getType.toString());
             } else {
               this.toast.show(data.error, 3000, 'red');
               this.processing = false;

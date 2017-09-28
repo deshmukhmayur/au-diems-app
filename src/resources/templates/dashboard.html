@@ -33,7 +33,7 @@
         </div>
         <!-- <a href="#!user"><img class="circle" src="http://via.placeholder.com/150x140"></a> -->
         <i class="material-icons circle medium z-depth-1 center grey lighten-3 grey-text text-darken-3">person</i>
-        <span class="white-text name email">${username}<a href="#" md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;" class="right white-text material-icons">arrow_drop_down</a></span>
+        <span class="white-text name email">${username}<span md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;" class="right white-text material-icons" style="cursor:pointer;">arrow_drop_down</span></span>
         <ul id="dropdown1">
           <li><a click.trigger="showToast($event)">Profile</a></li>
           <li class="divider"></li>
@@ -63,9 +63,9 @@
     </a>
     <ul>
       <li><a md-button="floating: true;" md-tooltip="position: left; text: Search;" md-waves="color: light; circle: true;"
-          class="blue modal-trigger"><i class="material-icons">search</i></a></li>
+          class="blue modal-trigger"><i class="material-icons tiny">search</i></a></li>
       <li><a route-href="route: add-marks" md-button="floating: true;" md-tooltip="position: left; text: Class Test Marks;" md-waves="color: light; circle: true;"
-          class="red"><i class="material-icons">insert_chart</i></a></li>
+          class="red"><i class="material-icons tiny">insert_chart</i></a></li>
     </ul>
   </div>
 </template>

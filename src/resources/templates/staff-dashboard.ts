@@ -1,9 +1,10 @@
-import { inject } from 'aurelia-framework';
+import { inject, useView } from 'aurelia-framework';
 import { Router, RouterConfiguration } from 'aurelia-router';
 import { MdToastService } from 'aurelia-materialize-bridge/toast/toastService';
 
 import { App } from '../../app';
 
+@useView('./dashboard.html')
 @inject(MdToastService, Router)
 export class Dashboard {
   public app: App;
@@ -11,7 +12,8 @@ export class Dashboard {
 
   constructor(
     private toast: MdToastService,
-    public mainRouter: Router) { }
+    public mainRouter: Router
+  ) { }
 
   public configureRouter(config: RouterConfiguration, chrouter: Router) {
     // config.addAuthorizeStep(AuthorizationStep);
@@ -21,22 +23,22 @@ export class Dashboard {
       },
       {
         route: 'home', name: 'home', title: 'Home',
-        moduleId: 'resources/pages/home',
+        moduleId: 'resources/pages/staff/staff-home',
         settings: { icon: 'home', fab: true }, nav: true
       },
       {
         route: 'class', name: 'class', title: 'My Class',
-        moduleId: 'resources/pages/my-class',
+        moduleId: 'resources/pages/staff/my-class',
         settings: { icon: 'people', fab: true }, nav: true
       },
       {
         route: 'mentees', name: 'mentees', title: 'My Mentees',
-        moduleId: 'resources/pages/my-mentees',
+        moduleId: 'resources/pages/staff/my-mentees',
         settings: { icon: 'people_outline' }, nav: true
       },
       {
         route: 'subjects', name: 'subjects', title: 'My Subjects',
-        moduleId: 'resources/pages/my-subjects',
+        moduleId: 'resources/pages/staff/my-subjects',
         settings: { icon: 'book' }, nav: true
       },
       {

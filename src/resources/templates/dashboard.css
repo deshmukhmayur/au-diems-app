@@ -14,10 +14,10 @@ md-progress#main-progress > .progress {
     margin: 0;
 }
 
-#fab > a > .material-icons {
+.fixed-action-btn > a > .material-icons {
     transition: .2s ease-out;
 }
-#fab:hover > a > .material-icons {
+.fixed-action-btn.active > a > .material-icons {
     transform: rotateZ(45deg);
 }
 

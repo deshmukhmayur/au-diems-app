@@ -2,10 +2,10 @@ import { autoinject } from 'aurelia-framework';
 import { HttpClient } from 'aurelia-fetch-client';
 import 'fetch';
 import { MdToastService } from 'aurelia-materialize-bridge/toast/toastService';
-import { App } from '../../app';
+import { App } from '../../../app';
 
 @autoinject
-export class Home {
+export class StaffHome {
   public staff: any;
 
   constructor(

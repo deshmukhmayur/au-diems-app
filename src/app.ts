@@ -13,21 +13,21 @@ export class App {
     config.addAuthorizeStep(AuthorizeStep);
     config.map([
       {
-        route: '', redirect: 'staff'
+        route: '', redirect: 'login'
       },
-      // {
-      //   route: 'admin', name: 'admin',
-      //   moduleId: 'resources/templates/dashboard',
-      //   settings: { roles: ['admin'] }, nav: false
-      // },
       {
-        route: ['staff', 'admin'], name: 'home',
-        moduleId: 'resources/templates/dashboard',
+        route: 'admin', name: 'admin',
+        moduleId: 'resources/templates/admin-dashboard',
+        settings: { roles: ['admin'] }, nav: false
+      },
+      {
+        route: 'staff', name: 'staff',
+        moduleId: 'resources/templates/staff-dashboard',
         settings: { roles: ['staff'] }, nav: false
       },
       {
         route: 'login', name: 'login', title: 'Sign In',
-        moduleId: 'login',
+        moduleId: 'resources/pages/login',
         settings: { roles: ['none'] }, nav: false
       }
     ]);
