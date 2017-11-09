@@ -33,12 +33,15 @@ export class AddMarks {
       let formData = new FormData();
 
       formData.append('file', this.file[0]);
+      formData.append('ct_no', this.ctNo.toString());
+      formData.append('passing_marks', this.passingMarks.toString());
+      formData.append('total_marks', this.totalMarks.toString());
       // console.log(formData.getAll('file'));
 
       let url = new URLSearchParams();
-      url.set('ct_no', this.ctNo.toString());
-      url.set('passing_marks', this.passingMarks.toString());
-      url.set('total_marks', this.totalMarks.toString());
+      // url.set('ct_no', this.ctNo.toString());
+      // url.set('passing_marks', this.passingMarks.toString());
+      // url.set('total_marks', this.totalMarks.toString());
       url.set('access_token', App.user.getToken.toString());
 
       this.http.fetch(`api/staff/add-marks?${url.toString()}`, {
@@ -50,8 +53,8 @@ export class AddMarks {
       })
         .then(res => res.json())
         .then(data => {
-          console.log('data', data);
-          this.toast.show('Data uploaded successfully', 4000, 'green');
+          // console.log('data', data);
+          this.toast.show(data.message, 4000, 'green');
           this.clearForm();
         })
         .catch(err => {
@@ -60,7 +63,7 @@ export class AddMarks {
         });
 
     } else {
-      console.log('No file selected');
+      // console.log('No file selected');
       this.toast.show('Please select a file', 4000, 'blue');
     }
   }
@@ -73,8 +76,8 @@ export class AddMarks {
 
   private clearForm() {
     this.file = null;
-    this.ctNo = null;
-    this.passingMarks = null;
-    this.totalMarks = null;
+    // this.ctNo = null;
+    // this.passingMarks = null;
+    // this.totalMarks = null;
   }
 }

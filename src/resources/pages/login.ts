@@ -65,14 +65,14 @@ export class Login {
           })
         }).then(res => res.json())
           .then(data => {
-            console.log(data);
+            // console.log(data);
             if (data.status >= 200 && data.status < 300) {
               App.user = new User(
                 data.username,
                 data.access_token,
                 this.userType
               );
-              console.log(App.user);
+              // console.log(App.user);
               localStorage.setItem('user', JSON.stringify(App.user));
               this.toast.show('Login Successfull', 3000, 'green');
               this.router.navigateToRoute(App.user.getType.toString());

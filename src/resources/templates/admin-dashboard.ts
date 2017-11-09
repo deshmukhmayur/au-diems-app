@@ -29,16 +29,37 @@ export class Dashboard {
         settings: { icon: 'people' }, nav: true
       },
       {
-        route: 'notice-admin', name: 'notice-admins', title: 'Notice Administrators',
-        moduleId: 'resources/pages/admin/notice-admin',
-        settings: { icon: 'people' }, nav: true
+        route: 'students', name: 'student-list', title: 'Students',
+        moduleId: 'resources/pages/admin/student-list',
+        settings: { icon: 'school' }, nav: true
       },
       {
-        route: 'Students', name: 'student-list', title: 'Students',
-        moduleId: 'resources/pages/admin/student-list',
-        settings: { icon: 'people' }, nav: true
+        route: 'notice-admin', name: 'notice-admins', title: 'Notice Administrators',
+        moduleId: 'resources/pages/admin/notice-admin',
+        settings: { icon: 'supervisor_account' }, nav: true
+      },
+      {
+        route: 'add-staff', name: 'add-staff', title: 'Add Staff',
+        moduleId: 'resources/pages/admin/add-staff',
+        settings: { icon: '', isChild: true}, nav: false
+      },
+      {
+        route: 'add-student', name: 'add-student', title: 'Add Student',
+        moduleId: 'resources/pages/admin/add-student',
+        settings: { icon: '', isChild: true}, nav: false
+      },
+      {
+        route: 'add-notice-admin', name: 'add-notice-admin', title: 'Add Notice Administrator',
+        moduleId: 'resources/pages/admin/add-notice-admin',
+        settings: { icon: '', isChild: true}, nav: false
+      },
+      {
+        route: 'settings', name: 'settings', title: 'Settings',
+        moduleId: 'resources/pages/admin/admin-settings',
+        settings: { icon: 'settings' }, nav: false
       }
     ]);
+    config.fallbackRoute('home');
     this.router = chrouter;
   }
 
@@ -56,5 +77,6 @@ export class Dashboard {
   public attached() {
     this.username = App.user.getUsername;
     this.toast.show('Welcome ' + this.username, 1000, 'blue');
+    // console.log(this.router);
   }
 }

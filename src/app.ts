@@ -28,9 +28,16 @@ export class App {
       {
         route: 'login', name: 'login', title: 'Sign In',
         moduleId: 'resources/pages/login',
-        settings: { roles: ['none'] }, nav: false
+        nav: false
+      },
+      {
+        route: '404', name: 'not-found', title: 'Page not found',
+        moduleId: 'resources/pages/not-found',
+        nav: false
       }
     ]);
+    config.mapUnknownRoutes('resources/pages/not-found');
+    config.fallbackRoute('not-found');
   }
 }
 
@@ -44,13 +51,15 @@ class AuthorizeStep {
     }
 
     if (navigationInstruction.getAllInstructions()
-      .some(i => i.config.settings.roles.indexOf('admin') !== -1 ||
-        i.config.settings.roles.indexOf('staff') !== -1)) {
+      .some(i => i.config.settings && i.config.settings.roles &&
+        (i.config.settings.roles.indexOf('admin') !== -1 ||
+          i.config.settings.roles.indexOf('staff') !== -1))
+    ) {
       let isLoggedIn = App.user ? true : false;
       if (!isLoggedIn) {
         return next.cancel(new Redirect('login'));
-      // } else if (navigationInstruction.config.settings.roles.indexOf(App.user.getType) === -1) {
-      //   return next.cancel(new Redirect(App.user.getType.toString()));
+        // } else if (navigationInstruction.config.settings.roles.indexOf(App.user.getType) === -1) {
+        //   return next.cancel(new Redirect(App.user.getType.toString()));
       }
     }
 

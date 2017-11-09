@@ -12,7 +12,7 @@ export function configure(aurelia: Aurelia) {
     .plugin('aurelia-validation');
 
   // Uncomment the line below to enable animation.
-  // aurelia.use.plugin('aurelia-animator-css');
+  aurelia.use.plugin('aurelia-animator-css');
 
   aurelia.start().then(() => aurelia.setRoot());
 }

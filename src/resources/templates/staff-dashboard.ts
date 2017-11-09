@@ -43,10 +43,11 @@ export class Dashboard {
       },
       {
         route: 'add-marks', name: 'add-marks', title: 'Add Class Test Marks',
-        moduleId: 'resources/pages/add-marks',
+        moduleId: 'resources/pages/staff/add-marks',
         settings: { icons: 'insert_chart', isChild: true }, nav: false
       }
     ]);
+    config.fallbackRoute('home');
     this.router = chrouter;
   }
 

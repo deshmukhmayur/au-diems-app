@@ -1,0 +1,27 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <h1>Add Staff</h1>
+    </div>
+
+    <form>
+      <div class="row">
+        <div class="col s12 m6">
+          <md-input md-label="Enter name" md-value.bind="name"></md-input>
+        </div>
+        <div class="col s12 m6">
+          <md-input md-label="Enter department" md-value.bind="dept"></md-input>
+        </div>
+        <div class="col s12 m6">
+          <md-input md-label="Enter email" md-type="email" md-required="true" md-validate="true" md-value.bind="email"></md-input>
+        </div>
+        <div class="col s12 m6">
+          <md-input md-label="Enter email" md-type="email" md-required="true" md-validate="true" md-value.bind="mobNo"></md-input>
+        </div>
+      </div>
+      <div class="row" class="right-align">
+        <button md-button md-waves>Add Staff<i class="material-icons right">submit</i></button>
+      </div>
+    </form>
+  </div>
+</template>

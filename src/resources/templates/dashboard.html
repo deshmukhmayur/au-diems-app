@@ -47,14 +47,14 @@
         <li>
           <div class="divider"></div>
         </li>
-        <li md-waves><a href="#"><i class="material-icons">settings</i>Settings</a></li>
+        <li md-waves if.bind="router.routes[router.routes.length - 1].name == 'settings'"><a route-href="route: settings;"><i class="material-icons">${router.routes[router.routes.length - 1].settings.icon}</i>Settings</a></li>
         <li md-waves><a href="#"><i class="material-icons">feedback</i>Feedback</a></li>
       </ul>
     </md-sidenav>
   </aside>
 
   <main class="page-host">
-    <router-view></router-view>
+    <router-view swap-order="with"></router-view>
   </main>
 
   <div class="fixed-action-btn" id="fab" if.bind="router.currentInstruction.config.settings.fab">
