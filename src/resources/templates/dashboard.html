@@ -18,7 +18,9 @@
           </a>
         </li>
       </ul>
-      <a href="#${router.baseUrl}" class="brand-logo truncate"><span>${router.currentInstruction.config.title}</span></a>
+      <a href="#${router.baseUrl}" class="brand-logo truncate">
+        <span>${router.currentInstruction.config.title}</span>
+      </a>
       <!-- <ul class="hide-on-med-and-down right">
         <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active':''}"><a href.bind="row.href">${row.title}</a></li>
       </ul> -->
@@ -33,22 +35,41 @@
         </div>
         <!-- <a href="#!user"><img class="circle" src="http://via.placeholder.com/150x140"></a> -->
         <i class="material-icons circle medium z-depth-1 center grey lighten-3 grey-text text-darken-3">person</i>
-        <span class="white-text name email">${username}<span md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;" class="right white-text material-icons" style="cursor:pointer;">arrow_drop_down</span></span>
+        <span class="white-text name email">
+          ${username} <i class="material-icons tiny" if.bind="isAdmin">verified_user</i>
+          <span md-dropdown="activates: dropdown1; alignment: right; constrain-width: false;" class="right white-text material-icons"
+            style="cursor:pointer;">arrow_drop_down
+          </span>
+        </span>
         <ul id="dropdown1">
-          <li><a click.trigger="showToast($event)">Profile</a></li>
+          <li if.bind="router.currentInstruction.parentInstruction.config.name != 'admin'">
+            <a route-href="route: profile;">Profile</a>
+          </li>
+          <li><a route-href="route: change-password">Change Password</a></li>
           <li class="divider"></li>
-          <li><a click.delegate="signOut()">Sign Out</a></li>
+          <li>
+            <a click.delegate="signOut()">Sign Out</a>
+          </li>
         </ul>
       </div>
       <ul>
-        <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active':''}"><a href.bind="row.href"><i class="material-icons">${row.settings.icon}</i>${row.title}</a></li>
+        <li md-waves repeat.for="row of router.navigation" class="${row.isActive ? 'active':''}">
+          <a href.bind="row.href">
+            <i class="material-icons">${row.settings.icon}</i>${row.title}</a>
+        </li>
       </ul>
       <ul class="float-bottom">
         <li>
           <div class="divider"></div>
         </li>
-        <li md-waves if.bind="router.routes[router.routes.length - 1].name == 'settings'"><a route-href="route: settings;"><i class="material-icons">${router.routes[router.routes.length - 1].settings.icon}</i>Settings</a></li>
-        <li md-waves><a href="#"><i class="material-icons">feedback</i>Feedback</a></li>
+        <li md-waves if.bind="router.currentInstruction.parentInstruction.config.name == 'admin'">
+          <a route-href="route: settings;">
+            <i class="material-icons">${router.routes[router.routes.length - 2].settings.icon}</i>Settings</a>
+        </li>
+        <li md-waves if.bind="router.hasOwnRoute('profile')">
+          <a route-href="route: feedback;">
+            <i class="material-icons">feedback</i>Feedback</a>
+        </li>
       </ul>
     </md-sidenav>
   </aside>
@@ -62,10 +83,17 @@
       <i class="large material-icons">add</i>
     </a>
     <ul>
-      <li><a md-button="floating: true;" md-tooltip="position: left; text: Search;" md-waves="color: light; circle: true;"
-          class="blue modal-trigger"><i class="material-icons tiny">search</i></a></li>
-      <li><a route-href="route: add-marks" md-button="floating: true;" md-tooltip="position: left; text: Class Test Marks;" md-waves="color: light; circle: true;"
-          class="red"><i class="material-icons tiny">insert_chart</i></a></li>
+      <li>
+        <a md-button="floating: true;" md-tooltip="position: left; text: Search;" md-waves="color: light; circle: true;" class="blue modal-trigger">
+          <i class="material-icons tiny">search</i>
+        </a>
+      </li>
+      <li>
+        <a route-href="route: add-marks" md-button="floating: true;" md-tooltip="position: left; text: Class Test Marks;" md-waves="color: light; circle: true;"
+          class="red">
+          <i class="material-icons tiny">insert_chart</i>
+        </a>
+      </li>
     </ul>
   </div>
 </template>

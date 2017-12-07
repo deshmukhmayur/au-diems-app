@@ -53,10 +53,20 @@ export class Dashboard {
         moduleId: 'resources/pages/admin/add-notice-admin',
         settings: { icon: '', isChild: true}, nav: false
       },
+      // {
+      //   route: 'feedback', name: 'feedback', title: 'Fedback',
+      //   moduleId: 'resources/pages/feedback',
+      //   settings: { isChild: true }, nav: false
+      // },
       {
         route: 'settings', name: 'settings', title: 'Settings',
         moduleId: 'resources/pages/admin/admin-settings',
         settings: { icon: 'settings' }, nav: false
+      },
+      {
+        route: 'change-password', name: 'change-password', title: 'Change Password',
+        moduleId: 'resources/pages/change-password',
+        settings: { isChild: true }, nav: false
       }
     ]);
     config.fallbackRoute('home');
@@ -78,5 +88,9 @@ export class Dashboard {
     this.username = App.user.getUsername;
     this.toast.show('Welcome ' + this.username, 1000, 'blue');
     // console.log(this.router);
+  }
+
+  get isAdmin() {
+    return (App.user.getType === 'admin') ? true : false;
   }
 }

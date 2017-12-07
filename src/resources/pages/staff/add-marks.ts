@@ -18,7 +18,7 @@ export class AddMarks {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://localhost:8880/');
+        .withBaseUrl(App.apiServer);
     });
   }
 
@@ -53,8 +53,8 @@ export class AddMarks {
       })
         .then(res => res.json())
         .then(data => {
-          // console.log('data', data);
           this.toast.show(data.message, 4000, 'green');
+          console.log('data', data.errors);
           this.clearForm();
         })
         .catch(err => {

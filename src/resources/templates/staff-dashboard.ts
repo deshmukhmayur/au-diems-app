@@ -45,6 +45,21 @@ export class Dashboard {
         route: 'add-marks', name: 'add-marks', title: 'Add Class Test Marks',
         moduleId: 'resources/pages/staff/add-marks',
         settings: { icons: 'insert_chart', isChild: true }, nav: false
+      },
+      {
+        route: 'feedback', name: 'feedback', title: 'Feedback',
+        moduleId: 'resources/pages/feedback',
+        settings: { isChild: true }, nav: false
+      },
+      {
+        route: 'profile', name: 'profile', title: 'Profile',
+        moduleId: 'resources/pages/staff/profile',
+        settings: { isChild: true }, nav: false
+      },
+      {
+        route: 'change-password', name: 'change-password', title: 'Change Password',
+        moduleId: 'resources/pages/change-password',
+        settings: { isChild: true }, nav: false
       }
     ]);
     config.fallbackRoute('home');

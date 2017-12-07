@@ -2,43 +2,46 @@
   <require from="../custom-attributes/md-auto-focus"></require>
 
   <div class="container valign-wrapper" style="min-height: 100vh;">
-      <form submit.delegate="submit()" class="row">
-        <md-card class="col s12 m6 offset-m3" md-title="Sign In" md-action="true" md-size="large">
-          <md-progress if.bind="isProcessing" style="position:absolute;top:0;left:0;width:100%;margin-top:-7px;"></md-progress>
-          <div class="container-fluid">
-            with your Account
-            <div class="row">
-              <div class="col s12">
-                <br>
-                <select autofocus md-select value.two-way="userType & validate:rules">
-                  <option value="" disabled selected>Select User Type</option>
-                  <option value="admin">Admin</option>
-                  <option value="staff">Staff</option>
-                </select>
-              </div>
-              <div class="col s12">
-                <md-input md-type="email" md-label="Enter your email" md-value.bind="userName & validate:rules" md-disabled.bind="isProcessing"></md-input>
-              </div>
-              <div class="col s12">
-                <md-input md-type.bind="getPassStatus" md-label="Enter your Password" md-value.bind="password & validate:rules" md-disabled.bind="isProcessing"></md-input>
-              </div>
-              <div class="col s12">
-                <md-checkbox md-checked.bind="showPassword" class="right">Show Password</md-checkbox>
-                <a href="#" class="left hide-on-small-only">Trouble Signing in?</a>
-              </div>
+    <form submit.delegate="submit()" class="row">
+      <md-card class="col s12 m6 offset-m3" md-title="Sign In" md-action="true" md-size="large">
+        <md-progress if.bind="isProcessing" style="position:absolute;top:0;left:0;width:100%;margin-top:-7px;"></md-progress>
+        <div class="container-fluid">
+          with your Account
+          <div class="row">
+            <div class="col s12">
+              <br>
+              <select autofocus md-select value.two-way="userType & validate:rules">
+                <option value="" disabled selected>Select User Type</option>
+                <option value="admin">Admin</option>
+                <option value="staff">Staff</option>
+              </select>
+            </div>
+            <div class="col s12">
+              <md-input md-type="email" md-label="Enter your email" md-value.bind="userName & validate:rules" md-disabled.bind="isProcessing"></md-input>
+            </div>
+            <div class="col s12">
+              <md-input md-type.bind="getPassStatus" md-label="Enter your Password" md-value.bind="password & validate:rules" md-disabled.bind="isProcessing"></md-input>
+            </div>
+            <div class="col s12">
+              <md-checkbox md-checked.bind="showPassword" class="right">Show Password</md-checkbox>
+              <a href="#" class="left hide-on-small-only">Trouble Signing in?</a>
             </div>
           </div>
-          <div slot="action">
-            <a href="#" class="blue-text hide-on-med-and-up">More options</a>
-            <button class="right" type="submit" md-button md-waves>Login</button>
-          </div>
-        </md-card>
+        </div>
+        <div slot="action">
+          <a href="#" class="blue-text hide-on-med-and-up">More options</a>
+          <button class="right" type="submit" md-button md-waves>Login</button>
+        </div>
+      </md-card>
       <footer class="col s12 m6 offset-m3 grey-text text-darken-1">
-        <a href="https://play.google.com/store/apps/details?id=org.diems.diemsapp" class="col s12 m6 center left grey-text text-darken-2" target="_blank">Get the Android App <i class="material-icons tiny" style="vertical-align:middle;">get_app</i></a>
+        <a href="https://play.google.com/store/apps/details?id=org.diems.diemsapp" class="col s12 m6 center left grey-text text-darken-2"
+          target="_blank">Get the Android App
+          <i class="material-icons tiny" style="vertical-align:middle;">get_app</i>
+        </a>
 
-        <span class="right col s12 m6 center">&copy; 2017 <a href="http://dietms.org" class="grey-text text-darken-2" target="_blank">DIEMS</a>, Aurangabad</span>
+        <span class="right col s12 m6 center">&copy; 2017
+          <a href="http://dietms.org" class="grey-text text-darken-2" target="_blank">DIEMS</a>, Aurangabad</span>
       </footer>
-    </div>
+    </form>
   </div>
-
 </template>

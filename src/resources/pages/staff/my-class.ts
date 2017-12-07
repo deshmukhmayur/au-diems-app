@@ -15,7 +15,7 @@ export class MyClass {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://localhost:8880/');
+        .withBaseUrl(App.apiServer);
     });
   }
 

@@ -1,0 +1,45 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m10 offset-m1">
+        <md-card md-title="Your profile">
+          <form>
+            <div class="row">
+              <div class="col s12">
+                <h6>Your Personal Information</h6>
+              </div>
+              <div class="col s12">
+                <md-input md-label="Name" md-value.bind="profileData.name" md-readonly.bind="true"></md-input>
+              </div>
+              <div class="col s12 m6">
+                <md-input md-type="email" md-label="Email Address" md-value.bind="profileData.email" md-readonly.bind="true"></md-input>
+              </div>
+              <div class="col s12 m6">
+                <md-input md-label="Mobile Number" md-value.bind="profileData.mob_no" md-readonly.bind="true"></md-input>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <h6>Your Department &amp; Class</h6>
+              </div>
+              <div class="col s12 m6">
+                <md-input md-label="Department" md-value.bind="profileData.department" md-readonly.bind="true"></md-input>
+              </div>
+              <div class="col s12 m6" if.bind="profileData.class">
+                <md-input md-label="Class" md-value.bind="profileData.class" md-readonly.bind="true"></md-input>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col s12">
+                <h6>Your Subjects</h6>
+              </div>
+              <div repeat.for="subject of profileData.subjects" class="col s12 m4">
+                <md-input md-label.bind="subject.class" md-value.bind="subject.name" md-readonly.bind="true"></md-input>
+              </div>
+            </div>
+          </form>
+        </md-card>
+      </div>
+    </div>
+  </div>
+</template>

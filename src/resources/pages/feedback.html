@@ -1,0 +1,41 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 m8 offset-m2">
+        <form submit.delegate="submit()">
+          <md-card md-title="Feedback Form" md-action="true">
+            <md-progress if.bind="isProcessing" style="position:absolute;top:0;left:0;width:100%;margin-top:-7px;"></md-progress>
+            <div if.bind="isSubmitted">
+              Thank you for your feedback.
+            </div>
+            <div if.bind="!isSubmitted">
+              <div class="row">
+                <div class="col s12">
+                  <md-input md-label="Subject" md-value.bind="subject & validate: rules"></md-input>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col s12">
+                  <md-input md-label="Enter your message here..." md-text-area="true" md-value.bind="message & validate: rules"></md-input>
+                </div>
+              </div>
+            </div>
+            <p class="center-align grey-text text-lighten-1">
+              <small>Your feedback helps us improve and provide a better experience for you.</small>
+            </p>
+            <div slot="action" class="right-align">
+              <button md-button md-waves type="submit" if.bind="!isSubmitted">
+                Submit
+                <i class="material-icons right">send</i>
+              </button>
+              <a md-button="flat: true;" md-waves class="blue-text" type="button" click.delegate="reload()" if.bind="isSubmitted">
+                Submit another response
+                <i class="material-icons right">refresh</i>
+              </a>
+            </div>
+          </md-card>
+        </form>
+      </div>
+    </div>
+  </div>
+</template>

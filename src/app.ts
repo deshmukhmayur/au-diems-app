@@ -1,9 +1,14 @@
 import { Router, RouterConfiguration, Redirect } from 'aurelia-router';
-
+import { environment } from './environment';
 import { User } from './resources/models/user';
 
 export class App {
-  public static user: User; // = new User('test', 'asdkfjhasdf', 'staff');
+  public static user: User;
+  public static apiServer: string = environment.api_url;
+  public static refreshUserData(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
+
   public router: Router;
 
   public configureRouter(config: RouterConfiguration, router: Router) {
@@ -58,8 +63,6 @@ class AuthorizeStep {
       let isLoggedIn = App.user ? true : false;
       if (!isLoggedIn) {
         return next.cancel(new Redirect('login'));
-        // } else if (navigationInstruction.config.settings.roles.indexOf(App.user.getType) === -1) {
-        //   return next.cancel(new Redirect(App.user.getType.toString()));
       }
     }
 

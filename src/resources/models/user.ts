@@ -16,4 +16,8 @@ export class User {
   get getType(): String {
     return this.uType;
   }
+
+  public set setToken(newToken: String) {
+    this.token = newToken;
+  }
 }

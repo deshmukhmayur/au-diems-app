@@ -48,7 +48,7 @@ export class Login {
     http.configure(config => {
       config
         .useStandardConfiguration()
-        .withBaseUrl('http://localhost:8880/');
+        .withBaseUrl(App.apiServer);
     });
   }
 
@@ -73,8 +73,8 @@ export class Login {
                 this.userType
               );
               // console.log(App.user);
-              localStorage.setItem('user', JSON.stringify(App.user));
-              this.toast.show('Login Successfull', 3000, 'green');
+              App.refreshUserData(App.user);
+              // this.toast.show('Login Successfull', 3000, 'green');
               this.router.navigateToRoute(App.user.getType.toString());
             } else {
               this.toast.show(data.error, 3000, 'red');
@@ -83,7 +83,7 @@ export class Login {
           })
           .catch(err => {
             console.log(err);
-            this.toast.show('Network error. Please try again later.', 4000, 'red');
+            this.toast.show('Network error. Please try again later.', 3000, 'red');
             this.processing = false;
           });
       }
