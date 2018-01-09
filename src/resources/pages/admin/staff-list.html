@@ -1,5 +1,45 @@
 <template>
   <div class="container">
-    <h1>Staff List</h1>
+    <div class="row">
+      <ul md-collapsible="accordion: true; popout: true;">
+        <li repeat.for="staff of staffs">
+          <div class="collapsible-header">
+            <div class="col s12">${staff.name}
+              <i class="material-icons secondary-content grey-text text-darken-2 hide-on-small-only">keyboard_arrow_down</i>
+            </div>
+          </div>
+          <div class="collapsible-body">
+            <div class="row" ref.bind="editable = false" ref.bind="editPwd = false">
+              <md-input class="col s12" md-label="Name" md-value.bind="staff.name" if.bind="editable"></md-input>
+              
+              <md-input class="col s12 m6" md-label="Email" md-value.bind="staff.email" md-disabled.bind="!editable"></md-input>
+              <md-input class="col s12 m6" md-label="Contact No." md-value.bind="staff.contact" md-disabled.bind="!editable"></md-input>
+              <md-input class="col s12 m4" md-label="Department" md-value.bind="staff.department" md-disabled.bind="!editable"></md-input>
+              <md-input class="col s12 m4" md-label="Class" md-value.bind="staff.class" md-disabled.bind="!editable"></md-input>
+              <md-input class="col s12 m4" md-label="Division" md-value.bind="staff.division" md-disabled.bind="!editable"></md-input>
+
+              <md-input class="col s12" md-label="Mentor-Mentee Batch" md-value.bind="staff.mentee_batch" md-disabled.bind="!editable"></md-input>
+
+              <md-input class="col s12 m4" repeat.for="sub of staff.subjects" md-label="Subject ${$index + 1}" md-value.bind="sub" md-disabled.bind="!editable"></md-input>
+
+              <div if.bind="editable && editPwd" ref.bind="showPwd = false">
+                <md-input class="col s12" md-label="New Password or leave empty to keep it unachanged" md-value.bind="nadmin.password" md-type="${showPwd ? 'text' : 'password'}"></md-input>
+                <md-checkbox class="col s12 right-align" md-checked.bind="showPwd">Show Password</md-checkbox>
+              </div>
+            </div>
+            <div class="row">
+              <button if.bind="!editable" md-button md-waves="color: light;" class="primary right" click.trigger="editable = true">Edit</button>
+
+              <button if.bind="editable && !editPwd" md-button md-waves="color: light;" class="primary" click.trigger="editPwd = true">Change Password</button>
+
+              <div class="right">
+                <button if.bind="editable" md-button md-waves>Save</button>
+                <button if.bind="editable" md-button="flat: true;" md-waves click.trigger="editable = false">Cancel</button>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
